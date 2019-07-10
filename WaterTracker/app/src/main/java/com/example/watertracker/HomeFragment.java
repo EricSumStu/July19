@@ -9,12 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-public class BonusFragment extends Fragment {
+public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable
             ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragmet_bonus, container, false);
+        View v = inflater.inflate(R.layout.fragment_home, container, false);
         return v;
     }
 }
