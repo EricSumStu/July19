@@ -24,10 +24,10 @@ public class HomeFragment extends Fragment {
 
 
         counter = 0;
-        ImageButton bottleImageButton = (ImageButton) getView().findViewById(R.id.bottlebtn);
-        ImageButton glassImageButton = (ImageButton) getView().findViewById(R.id.glassbtn);
-        final TextView mTextView = (TextView) getView().findViewById(R.id.countertext);
-        final ProgressBar waterTracker = (ProgressBar) getView().findViewById(R.id.waterCounter);
+        ImageButton bottleImageButton = (ImageButton) v.findViewById(R.id.bottlebtn);
+        ImageButton glassImageButton = (ImageButton) v.findViewById(R.id.glassbtn);
+        final TextView mTextView = (TextView) v.findViewById(R.id.countertext);
+        final ProgressBar waterTracker = (ProgressBar) v.findViewById(R.id.waterCounter);
         waterTracker.setMax(3000);
         mTextView.setText("Total ml: " + counter);
 
