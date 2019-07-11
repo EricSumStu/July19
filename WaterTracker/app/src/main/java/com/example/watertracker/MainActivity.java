@@ -9,7 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.watertracker.BonusFragment;
+import com.example.watertracker.AboutFragment;
 import com.example.watertracker.R;
 import com.example.watertracker.StatFragment;
 import com.google.android.material.navigation.NavigationView;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawer.addDrawerListener(toogle);
         toogle.syncState();
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new BonusFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
 
         navigationView.setCheckedItem(R.id.nav_home);
     }
@@ -40,9 +40,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch(menuItem.getItemId()) {
-            case R.id.nav_add:
+            case R.id.nav_about:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new BonusFragment()).commit();
+                        new AboutFragment()).commit();
                 break;
             case R.id.nav_stat:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
