@@ -18,8 +18,9 @@ public class AboutFragment extends Fragment {
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragmet_about, container, false);
 
-        ImageButton btn = (ImageButton) v.findViewById(R.id.waterFactsBtn);
-        btn.setOnClickListener(new View.OnClickListener() {
+        ImageButton factsbtn = (ImageButton) v.findViewById(R.id.waterFactsBtn);
+        ImageButton credits = (ImageButton) v.findViewById(R.id.creditsbtn);
+        factsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent1 = new Intent(getActivity(), waterFacts.class);
@@ -27,10 +28,16 @@ public class AboutFragment extends Fragment {
                 startActivity(intent1);
             }
         });
+        credits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent2 = new Intent(getActivity(), creditsPage.class);
+
+                startActivity(intent2);
+            }
+        });
 
         return v;
-
-
 
     }
 }
