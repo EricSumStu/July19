@@ -26,7 +26,7 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class HomeFragment extends Fragment {
     private int counter;
-    private static final String FILE_NAME = "waterCounter.txt";
+    private static final String FILE_NAME = "waterCounter1.txt";
 
     @Nullable
     @Override
