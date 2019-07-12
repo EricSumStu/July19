@@ -41,34 +41,37 @@
 
     <ProgressBar
         android:id="@+id/waterCounter"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="0dp"
-        android:layout_height="16dp"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="382dp"
+        android:layout_height="20dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="112dp"
+        android:background="@null"
+        android:progressBackgroundTint="#add8e6"
+        android:progressTint="#0091ea"
         app:layout_constraintBottom_toTopOf="@+id/bottlebtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/countertext"
         android:layout_width="144dp"
         android:layout_height="85dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="monospace"
         app:layout_constraintBottom_toTopOf="@+id/bottlebtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.653"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/waterCounter"
-        app:layout_constraintVertical_bias="0.686"
-        android:fontFamily="monospace"/>
+        app:layout_constraintVertical_bias="0.686" />
 
     <TextView
         android:id="@+id/textView"
