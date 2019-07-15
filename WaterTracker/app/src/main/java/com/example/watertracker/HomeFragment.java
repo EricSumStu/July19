@@ -27,23 +27,33 @@ import static android.content.Context.MODE_PRIVATE;
 public class HomeFragment extends Fragment {
     private int counter;
     private static final String FILE_NAME = "waterCounter1.txt";
-
+    private TextView mTextView;
+    private ProgressBar waterTracker;
+    View v;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable
             ViewGroup container, @Nullable Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.fragment_home, container, false);
+        v = inflater.inflate(R.layout.fragment_home, container, false);
 
 
         counter = 0;
         ImageButton bottleImageButton = (ImageButton) v.findViewById(R.id.bottlebtn);
         ImageButton glassImageButton = (ImageButton) v.findViewById(R.id.glassbtn);
-        final TextView mTextView = (TextView) v.findViewById(R.id.countertext);
-        final ProgressBar waterTracker = (ProgressBar) v.findViewById(R.id.waterCounter);
+        ImageButton resetImageButton = (ImageButton) v.findViewById(R.id.resetbtn);
+        mTextView = (TextView) v.findViewById(R.id.countertext);
+        waterTracker = (ProgressBar) v.findViewById(R.id.waterCounter);
         waterTracker.setMax(3000);
         load(v);
         waterTracker.setProgress(counter);
         mTextView.setText("Total ml: " + counter);
+
+        resetImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                reset();
+            }
+        });
 
         bottleImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +95,14 @@ public class HomeFragment extends Fragment {
 
 
         return v;
+    }
+
+    public void reset(){
+        counter = 0;
+        mTextView.setText("Total ml: " + counter);
+        waterTracker.setProgress(counter);
+        save(v);
+
     }
 
     public void showMaxWarning(){
