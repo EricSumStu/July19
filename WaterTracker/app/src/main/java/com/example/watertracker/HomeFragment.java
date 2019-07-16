@@ -63,10 +63,11 @@ public class HomeFragment extends Fragment {
                 if(counter < 3000) {
                     counter = counter + 500;
                     random();
-                }
-                else{
+                } else{
                     showMaxWarning();
-                }if(counter >= 3000){
+                }
+
+                if(counter >= 3000){
                     showMaxWarning();
                 }
                 mTextView.setText("Total ml: " + counter);
