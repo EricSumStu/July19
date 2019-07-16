@@ -45,6 +45,10 @@ public class HomeFragment extends Fragment {
         counter = 0;
         ImageButton bottleImageButton = (ImageButton) v.findViewById(R.id.bottlebtn);
         ImageButton glassImageButton = (ImageButton) v.findViewById(R.id.glassbtn);
+        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        myAnim.setInterpolator(interpolator);
+        glassImageButton.setAnimation(myAnim);
         ImageButton resetImageButton = (ImageButton) v.findViewById(R.id.resetbtn);
         mTextView = (TextView) v.findViewById(R.id.countertext);
         waterTracker = (ProgressBar) v.findViewById(R.id.waterCounter);
@@ -82,7 +86,8 @@ public class HomeFragment extends Fragment {
         glassImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                ImageButton glassImageButton = v.findViewById(R.id.glassbtn);
+                glassImageButton.startAnimation(myAnim);
                 if (counter < 3000) {
                     counter = counter + 200;
                    // random();
@@ -193,16 +198,5 @@ public class HomeFragment extends Fragment {
                 }
             }
         }
-    }
-
-
-    public void didTapButton(View view) {
-        ImageButton glassImageButton = v.findViewById(R.id.glassbtn);
-        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
-
-        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
-        myAnim.setInterpolator(interpolator);
-
-        glassImageButton.startAnimation(myAnim);
     }
 }
