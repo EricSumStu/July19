@@ -14,9 +14,14 @@
             android:title="About"
             ></item>
         <item
-            android:id="@+id/nav_stat"
-            android:icon="@drawable/ic_stat"
-            android:title="Stats"
+        android:id="@+id/nav_stat"
+        android:icon="@drawable/ic_stat"
+        android:title="Stats"
+        ></item>
+        <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings"
             ></item>
     </group>
 </menu>

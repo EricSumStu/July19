@@ -27,7 +27,10 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class HomeFragment extends Fragment {
     private int counter;
+    private int progressMax;
     private static final String FILE_NAME = "waterCounter1.txt";
+    private static final String FILE_NAMEPROGRESS="ProgressMaxValue.txt";
+
     private TextView mTextView;
     private ProgressBar waterTracker;
     View v;
@@ -39,13 +42,15 @@ public class HomeFragment extends Fragment {
 
 
         counter = 0;
+        progressMax=3000;
         ImageButton bottleImageButton = (ImageButton) v.findViewById(R.id.bottlebtn);
         ImageButton glassImageButton = (ImageButton) v.findViewById(R.id.glassbtn);
         ImageButton resetImageButton = (ImageButton) v.findViewById(R.id.resetbtn);
         mTextView = (TextView) v.findViewById(R.id.countertext);
         waterTracker = (ProgressBar) v.findViewById(R.id.waterCounter);
-        waterTracker.setMax(3000);
         load(v);
+        loadProgress(v);
+        waterTracker.setMax(progressMax);
         waterTracker.setProgress(counter);
         mTextView.setText("Total ml: " + counter);
 
@@ -60,13 +65,13 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(counter < 3000) {
+                if(counter < progressMax) {
                     counter = counter + 500;
                     random();
                 }
                 else{
                     showMaxWarning();
-                }if(counter >= 3000){
+                }if(counter >= progressMax){
                     showMaxWarning();
                 }
                 mTextView.setText("Total ml: " + counter);
@@ -82,14 +87,14 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                if(counter < 3000) {
+                if(counter < progressMax) {
                     counter = counter + 200;
                     random();
                 }
                 else{
                     showMaxWarning();
                 }
-                if(counter >= 3000){
+                if(counter >= progressMax){
                     showMaxWarning();
                 }
                 mTextView.setText("Total ml: " + counter);
@@ -195,4 +200,36 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    public void loadProgress(View v) {
+        FileInputStream fis = null;
+
+        try {
+            fis = getActivity().openFileInput(FILE_NAMEPROGRESS);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String text;
+
+            while ((text = br.readLine()) != null) {
+                sb.append(text);
+            }
+
+            progressMax = Integer.parseInt(sb.toString());
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fis != null) {
+                try {
+                    fis.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 }
+
