@@ -21,6 +21,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Calendar;
+import java.util.Date;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -173,4 +175,35 @@ public class HomeFragment extends Fragment {
         }
     }
 
+    public void log() throws FileNotFoundException {
+        Calendar calendar = Calendar.getInstance();
+
+        int day_of_week = calendar.get(Calendar.DAY_OF_WEEK);
+        int week_of_year = calendar.get(Calendar.WEEK_OF_YEAR);
+
+        final String FILE_NAME = "day" + day_of_week + "-" + week_of_year + ".txt";
+
+        String text = Integer.toString(counter);
+        FileOutputStream fos = new FileOutputStream(FILE_NAME,true);
+
+        try {
+            fos = getActivity().openFileOutput(FILE_NAME, MODE_PRIVATE);
+            fos.write(text.getBytes());
+
+            Toast.makeText(getActivity(), "Logged",
+                    Toast.LENGTH_LONG).show();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (fos != null) {
+                try {
+                    fos.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
 }
