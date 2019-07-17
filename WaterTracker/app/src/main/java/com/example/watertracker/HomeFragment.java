@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -43,8 +45,15 @@ public class HomeFragment extends Fragment {
 
         counter = 0;
         progressMax=3000;
-        ImageButton bottleImageButton = (ImageButton) v.findViewById(R.id.bottlebtn);
-        ImageButton glassImageButton = (ImageButton) v.findViewById(R.id.glassbtn);
+        final ImageButton bottleImageButton = (ImageButton) v.findViewById(R.id.bottlebtn);
+        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        myAnim.setInterpolator(interpolator);
+        bottleImageButton.setAnimation(myAnim);
+
+        final ImageButton glassImageButton = (ImageButton) v.findViewById(R.id.glassbtn);
+        
+        glassImageButton.setAnimation(myAnim);
         ImageButton resetImageButton = (ImageButton) v.findViewById(R.id.resetbtn);
         mTextView = (TextView) v.findViewById(R.id.countertext);
         waterTracker = (ProgressBar) v.findViewById(R.id.waterCounter);
@@ -64,6 +73,7 @@ public class HomeFragment extends Fragment {
         bottleImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bottleImageButton.startAnimation(myAnim);
 
                 if(counter < progressMax) {
                     counter = counter + 500;
@@ -86,6 +96,7 @@ public class HomeFragment extends Fragment {
         glassImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                glassImageButton.startAnimation(myAnim);
 
                 if(counter < progressMax) {
                     counter = counter + 200;
