@@ -125,11 +125,11 @@ public class HomeFragment extends Fragment {
     }
 
     public void random(){
-        String[] arr = {"is your ass jealous of the amount of shit that just came out of your mouth", "Your family tree must be a cactus because everyone in your family is a prick", "The only way you'll get laid is if you crawl up a chicken's ass and wait", "Well done", "Keep drinking", "You're doing great sweetie", "Yaaaassssssssss QUEEN", "I'm so proud of you.I just wanted to tell you in case no one has", "It doesn't matter how slow you go, as long as you don't stop..", "A little progress each day adds up to big results"};
+        String[] arr = {"Look at you", "Keep calm and drink water!", "Water is love,Water is life", "Get hydrated man!",  "Well done", "Keep drinking", "You're doing great sweetie", "Yaaaassssssssss QUEEN", "I'm so proud of you.I just wanted to tell you in case no one has", "It doesn't matter how slow you go, as long as you don't stop..", "A little progress each day adds up to big results", "H2-Okurrrr"};
         Random r=new Random();
         int randomMessage=r.nextInt(arr.length);
         Toast.makeText(getActivity(), arr[randomMessage],
-                Toast.LENGTH_LONG).show();
+                Toast.LENGTH_SHORT).show();
 
 
     }
