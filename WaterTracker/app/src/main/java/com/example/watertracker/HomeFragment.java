@@ -221,12 +221,20 @@ public class HomeFragment extends Fragment {
         String text = Integer.toString(counter);
         FileOutputStream fos = new FileOutputStream(FILE_NAME,true);
 
-        try {
+
             fos = getActivity().openFileOutput(FILE_NAME, MODE_PRIVATE);
-            fos.write(text.getBytes());
+            try {
+                fos.write(text.getBytes());
+            } catch (IOException e) {
+                e.printStackTrace();
+
+            }
 
             Toast.makeText(getActivity(), "Logged",
                     Toast.LENGTH_LONG).show();
+        }
+
+
     public void loadProgress(View v) {
         FileInputStream fis = null;
 
@@ -248,9 +256,9 @@ public class HomeFragment extends Fragment {
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
-            if (fos != null) {
+            if (fis != null) {
                 try {
-                    fos.close();
+                    fis.close();
             if (fis != null) {
                 try {
                     fis.close();
@@ -258,7 +266,12 @@ public class HomeFragment extends Fragment {
                     e.printStackTrace();
                 }
             }
+        } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
+
 
