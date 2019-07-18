@@ -62,7 +62,7 @@ public class HomeFragment extends Fragment {
         loadProgress(v);
         waterTracker.setMax(progressMax);
         waterTracker.setProgress(counter);
-        mTextView.setText("Total ml: " + counter);
+        mTextView.setText("Total ml consumed: " + counter);
 
         resetImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +85,7 @@ public class HomeFragment extends Fragment {
                 }if(counter >= progressMax){
                     showMaxWarning();
                 }
-                mTextView.setText("Total ml: " + counter);
+                mTextView.setText("Total ml consumed: " + counter);
                 waterTracker.setProgress(counter);
                 save(v);
 
@@ -109,7 +109,7 @@ public class HomeFragment extends Fragment {
                 if(counter >= progressMax){
                     showMaxWarning();
                 }
-                mTextView.setText("Total ml: " + counter);
+                mTextView.setText("Total ml consumed: " + counter);
                 waterTracker.setProgress(counter);
                 save(v);
 
@@ -123,7 +123,7 @@ public class HomeFragment extends Fragment {
 
     public void reset(){
         counter = 0;
-        mTextView.setText("Total ml: " + counter);
+        mTextView.setText("Total ml consumed: " + counter);
         waterTracker.setProgress(counter);
         save(v);
 
