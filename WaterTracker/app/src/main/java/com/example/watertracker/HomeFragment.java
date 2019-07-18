@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -50,6 +51,7 @@ public class HomeFragment extends Fragment {
         counter = 0;
         progressMax=3000;
         final ImageButton bottleImageButton = (ImageButton) v.findViewById(R.id.bottlebtn);
+        final ImageButton logButton = (ImageButton) v.findViewById(R.id.logButton);
         final Animation bottleAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
         final Animation glassAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
         MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
@@ -118,6 +120,13 @@ public class HomeFragment extends Fragment {
                 save(v);
 
 
+            }
+        });
+
+        logButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                log(v);
             }
         });
 
@@ -210,29 +219,30 @@ public class HomeFragment extends Fragment {
         }
     }
 
-    public void log() throws FileNotFoundException {
+    public void log(View v) {
         Calendar calendar = Calendar.getInstance();
 
         int day_of_week = calendar.get(Calendar.DAY_OF_WEEK);
         int week_of_year = calendar.get(Calendar.WEEK_OF_YEAR);
 
-        final String FILE_NAME = "day" + day_of_week + "-" + week_of_year + ".txt";
+        String FILE_NAME_DAY = "day" + day_of_week + "-" + week_of_year + ".txt";
+        FileOutputStream fos = null;
 
         String text = Integer.toString(counter);
-        FileOutputStream fos = new FileOutputStream(FILE_NAME,true);
 
-
-            fos = getActivity().openFileOutput(FILE_NAME, MODE_PRIVATE);
             try {
+                fos = getActivity().openFileOutput(FILE_NAME_DAY, MODE_PRIVATE);
                 fos.write(text.getBytes());
+                Toast.makeText(getActivity(), "Logged: " + FILE_NAME_DAY + " with: " + text,
+                        Toast.LENGTH_LONG).show();
             } catch (IOException e) {
                 e.printStackTrace();
 
             }
 
-            Toast.makeText(getActivity(), "Logged",
-                    Toast.LENGTH_LONG).show();
+
         }
+
 
 
     public void loadProgress(View v) {
