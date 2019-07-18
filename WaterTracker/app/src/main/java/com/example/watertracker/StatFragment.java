@@ -35,45 +35,44 @@ public class StatFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_stat, container, false);
-                //
-        save(v);
         weeklyView(v);
         //
         return v;
     }
 
 
-    public void save(View v) {      // first we will save to file
-        int this_weeknumber = calendar.get(Calendar.WEEK_OF_YEAR);
-        String text = "300";
 
-        FileOutputStream fos = null;
-        int i = 0;
-        while (i < 7) {
-
-            try {
-                fos = getActivity().openFileOutput("day" + i+"_"+this_weeknumber + ".txt", MODE_PRIVATE);
-
-                fos.write(text.getBytes());
-                System.out.println("PRINTING :" + i+ " dataaaa");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (fos != null) {
-
-                    try {
-                        fos.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            i++;
-        }
-
-    }
+//    public void save(View v) {      // first we will save to file
+//        int this_weeknumber = calendar.get(Calendar.WEEK_OF_YEAR);
+//        String text = "300";
+//
+//        FileOutputStream fos = null;
+//        int i = 0;
+//        while (i < 7) {
+//
+//            try {
+//                fos = getActivity().openFileOutput("day" + i+"_"+this_weeknumber + ".txt", MODE_PRIVATE);
+//
+//                fos.write(text.getBytes());
+//                System.out.println("PRINTING :" + i+ " dataaaa");
+//            } catch (FileNotFoundException e) {
+//                e.printStackTrace();
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            } finally {
+//                if (fos != null) {
+//
+//                    try {
+//                        fos.close();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//            i++;
+//        }
+//
+//    }
 
 
     public ArrayList load(boolean isWeek) {
@@ -87,7 +86,9 @@ public class StatFragment extends Fragment {
 
                 try {
 
-                    fis = getActivity().openFileInput("day" + i + "_" + this_weeknumber + ".txt");
+                    fis = getActivity().openFileInput("day" + i + "-" + this_weeknumber + ".txt");
+                    System.out.println("day" + i + "-" + this_weeknumber + ".txt");
+                    System.out.println(fis);
                     InputStreamReader isr = new InputStreamReader(fis);
 
                     BufferedReader br = new BufferedReader(isr);
@@ -101,8 +102,9 @@ public class StatFragment extends Fragment {
                     while ((text = br.readLine()) != null) {
                         sb.append(text);
                     }
+
                     System.out.println("DATA IS PUT IN: " + Integer.parseInt(sb.toString()));
-                xAxisData.add(new BarEntry(Integer.parseInt(sb.toString()),i));
+                    xAxisData.add(new BarEntry(Integer.parseInt(sb.toString()), i));
 
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
