@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -25,12 +27,16 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
 
 public class HomeFragment extends Fragment {
     private int counter;
+    private int progressMax;
     private static final String FILE_NAME = "waterCounter1.txt";
+    private static final String FILE_NAMEPROGRESS="ProgressMaxValue.txt";
+
     private TextView mTextView;
     private ProgressBar waterTracker;
     View v;
@@ -42,13 +48,22 @@ public class HomeFragment extends Fragment {
 
 
         counter = 0;
-        ImageButton bottleImageButton = (ImageButton) v.findViewById(R.id.bottlebtn);
-        ImageButton glassImageButton = (ImageButton) v.findViewById(R.id.glassbtn);
+        progressMax=3000;
+        final ImageButton bottleImageButton = (ImageButton) v.findViewById(R.id.bottlebtn);
+        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
+        MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
+        myAnim.setInterpolator(interpolator);
+        bottleImageButton.setAnimation(myAnim);
+
+        final ImageButton glassImageButton = (ImageButton) v.findViewById(R.id.glassbtn);
+        
+        glassImageButton.setAnimation(myAnim);
         ImageButton resetImageButton = (ImageButton) v.findViewById(R.id.resetbtn);
         mTextView = (TextView) v.findViewById(R.id.countertext);
         waterTracker = (ProgressBar) v.findViewById(R.id.waterCounter);
-        waterTracker.setMax(3000);
         load(v);
+        loadProgress(v);
+        waterTracker.setMax(progressMax);
         waterTracker.setProgress(counter);
         mTextView.setText("Total ml: " + counter);
 
@@ -62,18 +77,22 @@ public class HomeFragment extends Fragment {
         bottleImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bottleImageButton.startAnimation(myAnim);
 
-                if(counter < 3000) {
+                if(counter < progressMax) {
                     counter = counter + 500;
+                    random();
                 }
                 else{
                     showMaxWarning();
-                }if(counter >= 3000){
+                }if(counter >= progressMax){
                     showMaxWarning();
                 }
                 mTextView.setText("Total ml: " + counter);
                 waterTracker.setProgress(counter);
                 save(v);
+
+
 
             }
         });
@@ -81,19 +100,23 @@ public class HomeFragment extends Fragment {
         glassImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                glassImageButton.startAnimation(myAnim);
 
-                if(counter < 3000) {
+                if(counter < progressMax) {
                     counter = counter + 200;
+                    random();
                 }
                 else{
                     showMaxWarning();
                 }
-                if(counter >= 3000){
+                if(counter >= progressMax){
                     showMaxWarning();
                 }
                 mTextView.setText("Total ml: " + counter);
                 waterTracker.setProgress(counter);
                 save(v);
+
+
             }
         });
 
@@ -121,6 +144,16 @@ public class HomeFragment extends Fragment {
         alertDialog.show();
     }
 
+    public void random(){
+        String[] arr = {"Look at you", "Keep calm and drink water!", "Water is love,Water is life", "Get hydrated man!",  "Well done", "Keep drinking", "You're doing great sweetie", "Yaaaassssssssss QUEEN", "I'm so proud of you.I just wanted to tell you in case no one has", "It doesn't matter how slow you go, as long as you don't stop..", "A little progress each day adds up to big results", "H2-Okurrrr"};
+        Random r=new Random();
+        int randomMessage=r.nextInt(arr.length);
+        Toast.makeText(getActivity(), arr[randomMessage],
+                Toast.LENGTH_SHORT).show();
+
+
+    }
+
     public void save(View v) {
         String text = Integer.toString(counter);
         FileOutputStream fos = null;
@@ -129,8 +162,7 @@ public class HomeFragment extends Fragment {
             fos = getActivity().openFileOutput(FILE_NAME, MODE_PRIVATE);
             fos.write(text.getBytes());
 
-            Toast.makeText(getActivity(), "Saved",
-                    Toast.LENGTH_LONG).show();
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -194,6 +226,22 @@ public class HomeFragment extends Fragment {
 
             Toast.makeText(getActivity(), "Logged",
                     Toast.LENGTH_LONG).show();
+    public void loadProgress(View v) {
+        FileInputStream fis = null;
+
+        try {
+            fis = getActivity().openFileInput(FILE_NAMEPROGRESS);
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader br = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String text;
+
+            while ((text = br.readLine()) != null) {
+                sb.append(text);
+            }
+
+            progressMax = Integer.parseInt(sb.toString());
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -202,6 +250,9 @@ public class HomeFragment extends Fragment {
             if (fos != null) {
                 try {
                     fos.close();
+            if (fis != null) {
+                try {
+                    fis.close();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -209,3 +260,4 @@ public class HomeFragment extends Fragment {
         }
     }
 }
+
