@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/seabackground"
     tools:context=".MainActivity">
 
     <TextView
@@ -15,7 +16,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/convergence"
         android:text="When we are born water makes up about 75% of our body weight"
-        android:textColor="#110B0B"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.434"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,7 +32,7 @@
         android:fontFamily="@font/convergence"
         android:foregroundTint="#FFFFFF"
         android:text="Water makes up about 60% of the body weight of older children and adults"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textColorHint="#512DA8"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.38"
@@ -47,7 +48,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/convergence"
         android:text="Water is constantly being lost from our body (when we go to the toilet, when we breathe, when we sweat) so if we don’t drink enough we become dehydrated."
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textColorHint="#7B1FA2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
@@ -62,7 +63,7 @@
         android:layout_marginTop="320dp"
         android:fontFamily="@font/convergence"
         android:text=" Water helps our body in many ways: It carries nutrients to cells; "
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         android:textColorHint="#000000"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -76,7 +77,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/convergence"
         android:text="It helps to remove waste products from our major organs;"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.38"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,7 +92,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/convergence"
         android:text="It helps us to control our body temperature."
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.24"
         app:layout_constraintStart_toStartOf="parent"
@@ -106,7 +107,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/convergence"
         android:text="Water is found in all drinks and also in food. For example water is in orange juice and milk; it is also in fruits and vegetables. It is even in cheese!"
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -120,27 +121,11 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/convergence"
         android:text="People can survive for up to 50 days without food but only a few days without drinking water."
-        android:textColor="#000000"
+        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.404"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="120dp"
-        android:layout_height="70dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.012"
-        app:srcCompat="@drawable/water2" />
 
     <TextView
         android:id="@+id/textView10"
@@ -153,11 +138,27 @@
         android:fontFamily="@font/inknut_antiqua_semibold"
         android:foregroundTint="#000A0202"
         android:text="   Facts About Water"
-        android:textColor="#02ABFF"
+        android:textColor="#035BFF"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.575"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="113dp"
+        android:layout_height="84dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/raindrop" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
