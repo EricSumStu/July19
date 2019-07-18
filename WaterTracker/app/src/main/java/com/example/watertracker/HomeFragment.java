@@ -50,14 +50,15 @@ public class HomeFragment extends Fragment {
         counter = 0;
         progressMax=3000;
         final ImageButton bottleImageButton = (ImageButton) v.findViewById(R.id.bottlebtn);
-        final Animation myAnim = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
+        final Animation bottleAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
+        final Animation glassAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
         MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
-        myAnim.setInterpolator(interpolator);
-        bottleImageButton.setAnimation(myAnim);
+        bottleAnimation.setInterpolator(interpolator);
+        bottleImageButton.setAnimation(bottleAnimation);
 
         final ImageButton glassImageButton = (ImageButton) v.findViewById(R.id.glassbtn);
-        
-        glassImageButton.setAnimation(myAnim);
+        glassAnimation.setInterpolator(interpolator);
+        glassImageButton.setAnimation(glassAnimation);
         ImageButton resetImageButton = (ImageButton) v.findViewById(R.id.resetbtn);
         mTextView = (TextView) v.findViewById(R.id.countertext);
         waterTracker = (ProgressBar) v.findViewById(R.id.waterCounter);
@@ -77,7 +78,7 @@ public class HomeFragment extends Fragment {
         bottleImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                bottleImageButton.startAnimation(myAnim);
+                bottleImageButton.startAnimation(bottleAnimation);
 
                 if(counter < progressMax) {
                     counter = counter + 500;
@@ -100,7 +101,7 @@ public class HomeFragment extends Fragment {
         glassImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                glassImageButton.startAnimation(myAnim);
+                glassImageButton.startAnimation(glassAnimation);
 
                 if(counter < progressMax) {
                     counter = counter + 200;
