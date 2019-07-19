@@ -129,6 +129,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 log(v);
+                reset();
             }
         });
 
@@ -241,7 +242,6 @@ public class HomeFragment extends Fragment {
                 e.printStackTrace();
 
             }
-
 
         }
 
