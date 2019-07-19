@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -35,44 +36,56 @@ public class StatFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_stat, container, false);
+        save(v);
         weeklyView(v);
         //
         return v;
     }
 
+    private static int getRandomNumberInRange(int min, int max) {
+
+        if (min >= max) {
+            throw new IllegalArgumentException("max must be greater than min");
+        }
+
+        Random r = new Random();
+        return r.nextInt((max - min) + 1) + min;
+    }
 
 
-//    public void save(View v) {      // first we will save to file
-//        int this_weeknumber = calendar.get(Calendar.WEEK_OF_YEAR);
-//        String text = "300";
-//
-//        FileOutputStream fos = null;
-//        int i = 0;
-//        while (i < 7) {
-//
-//            try {
-//                fos = getActivity().openFileOutput("day" + i+"_"+this_weeknumber + ".txt", MODE_PRIVATE);
-//
-//                fos.write(text.getBytes());
-//                System.out.println("PRINTING :" + i+ " dataaaa");
-//            } catch (FileNotFoundException e) {
-//                e.printStackTrace();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            } finally {
-//                if (fos != null) {
-//
-//                    try {
-//                        fos.close();
-//                    } catch (IOException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            }
-//            i++;
-//        }
-//
-//    }
+    public void save(View v) {      // first we will save to file
+        int this_weeknumber = calendar.get(Calendar.WEEK_OF_YEAR);
+
+
+        FileOutputStream fos = null;
+        int i = 0;
+        while (i < 4) {
+
+            String text = Integer.toString(getRandomNumberInRange(1000,2000));
+
+            try {
+                fos = getActivity().openFileOutput("day" + i+"-"+this_weeknumber + ".txt", MODE_PRIVATE);
+
+                fos.write(text.getBytes());
+                System.out.println("PRINTING :" + i+ " dataaaa");
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (fos != null) {
+
+                    try {
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            i++;
+        }
+
+    }
 
 
     public ArrayList load(boolean isWeek) {
@@ -128,13 +141,14 @@ public class StatFragment extends Fragment {
 public void weeklyView(View v) {
         ArrayList week = new ArrayList();
 
+        week.add("Sunday");
         week.add("Monday");
         week.add("Tuesday");
         week.add("Wednesday");
         week.add("Thursday");
         week.add("Friday");
         week.add("Saturday");
-        week.add("Sunday");
+
 
         ArrayList intakeOfWater = new ArrayList();
         intakeOfWater = load(true);
