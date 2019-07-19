@@ -222,7 +222,7 @@ public class HomeFragment extends Fragment {
     public void log(View v) {
         Calendar calendar = Calendar.getInstance();
 
-        int day_of_week = calendar.get(Calendar.DAY_OF_WEEK);
+        int day_of_week = calendar.get(Calendar.DAY_OF_WEEK)-1;
         int week_of_year = calendar.get(Calendar.WEEK_OF_YEAR);
 
         String FILE_NAME_DAY = "day" + day_of_week + "-" + week_of_year + ".txt";
