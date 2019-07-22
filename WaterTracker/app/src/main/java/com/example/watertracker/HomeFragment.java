@@ -41,12 +41,16 @@ public class HomeFragment extends Fragment {
     private TextView GoalTextView;
     private TextView mTextView;
     private ProgressBar waterTracker;
+
+    private boolean showCongrats = true;
+
     View v;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_home, container, false);
+
 
 
         counter = 0;
@@ -84,20 +88,16 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 bottleImageButton.startAnimation(bottleAnimation);
 
-                if(counter < progressMax) {
-                    counter = counter + 500;
-                    random();
-                }
-                else{
+                counter = counter + 500;
+                random();
+                if(showCongrats && counter >= progressMax){
                     showMaxWarning();
-                }if(counter >= progressMax){
-                    showMaxWarning();
+                    showCongrats = false;
                 }
+
                 mTextView.setText("Total ml consumed: " + counter);
                 waterTracker.setProgress(counter);
                 save(v);
-
-
 
             }
         });
@@ -107,16 +107,13 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 glassImageButton.startAnimation(glassAnimation);
 
-                if(counter < progressMax) {
-                    counter = counter + 200;
-                    random();
-                }
-                else{
+                counter = counter + 500;
+                random();
+                if(showCongrats && counter >= progressMax){
                     showMaxWarning();
+                    showCongrats = false;
                 }
-                if(counter >= progressMax){
-                    showMaxWarning();
-                }
+
                 mTextView.setText("Total ml consumed: " + counter);
                 waterTracker.setProgress(counter);
                 save(v);
@@ -142,6 +139,7 @@ public class HomeFragment extends Fragment {
         mTextView.setText("Total ml consumed: " + counter);
         waterTracker.setProgress(counter);
         save(v);
+        showCongrats = true;
 
     }
 
