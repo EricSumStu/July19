@@ -48,14 +48,29 @@ public class SettingsFragment extends Fragment {
 
              try {
                  max = (int) Integer.parseInt(String.valueOf(newProgress));
-                 saveProgress(v);
-                 Toast.makeText(getActivity(), "Goal has been changed", Toast.LENGTH_LONG).show();
+                 if (max > 0) {
+                     saveProgress(v);
+                     Toast.makeText(getActivity(), "Goal has been changed", Toast.LENGTH_LONG).show();
+                     Intent backToHome = new Intent(getActivity(), MainActivity.class);
+                     startActivity(backToHome);
+                 } else {
+                     AlertDialog alertDialog= new AlertDialog.Builder(getActivity()).create();
+                     alertDialog.setTitle("Can't enter a negative number");
+                     alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Ok",
+                             new DialogInterface.OnClickListener() {
+                                 public void onClick(DialogInterface dialog, int which) {
+                                     dialog.dismiss();
+                                 }
+                             });
+                     alertDialog.show();
+
+                 }
              } catch (NumberFormatException ex) {
                  ex.printStackTrace();
                  // Alert
                  AlertDialog alertDialog= new AlertDialog.Builder(getActivity()).create();
-                 alertDialog.setTitle("Enter a a valid number");
-                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Thanks",
+                 alertDialog.setTitle("Enter a valid number");
+                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
                          new DialogInterface.OnClickListener() {
                              public void onClick(DialogInterface dialog, int which) {
                                  dialog.dismiss();
@@ -74,9 +89,8 @@ public class SettingsFragment extends Fragment {
 
          }
 
-
         });
-
+       
 
         return v;
     }

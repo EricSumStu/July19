@@ -29,7 +29,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
-        android:hint="Set Your Goal"
+        android:hint="Set Your Goal ml"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/SetBtn"
         app:layout_constraintEnd_toEndOf="parent"
