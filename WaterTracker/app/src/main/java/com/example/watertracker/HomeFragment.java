@@ -130,7 +130,7 @@ public class HomeFragment extends Fragment {
         counter = 0;
         mTextView.setText("Total ml consumed: " + counter);
         waterTracker.setProgress(counter);
-        save(v);
+        log(v);
         showCongrats = true;
 
     }
