@@ -113,6 +113,7 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+<<<<<<< HEAD
         app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/countertext"
@@ -131,4 +132,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/log_icon" />
 
+=======
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
+        app:layout_constraintVertical_bias="0.603"
+        app:srcCompat="@drawable/newreset" />
+
+>>>>>>> c00cc51aa3466e5c1b8398decb8aace60ea045ee
 </androidx.constraintlayout.widget.ConstraintLayout>
