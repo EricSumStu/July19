@@ -78,6 +78,14 @@
         app:layout_constraintStart_toStartOf="@+id/bottlebtn" />
 
     <TextView
+        android:id="@+id/textView8"
+        android:layout_width="98dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="180dp"
+        android:gravity="center"
+        android:textColor="#010203" />
+
+    <TextView
         android:id="@+id/textView11"
         android:layout_width="98dp"
         android:layout_height="26dp"
