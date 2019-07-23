@@ -56,6 +56,7 @@ public class HomeFragment extends Fragment {
         counter = 0;
         progressMax=3000;
         final ImageButton bottleImageButton = (ImageButton) v.findViewById(R.id.bottlebtn);
+        final ImageButton logButton = (ImageButton) v.findViewById(R.id.logButton);
         final Animation bottleAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
         final Animation glassAnimation = AnimationUtils.loadAnimation(getContext(), R.anim.bounce);
         MyBounceInterpolator interpolator = new MyBounceInterpolator(0.2, 20);
@@ -96,7 +97,7 @@ public class HomeFragment extends Fragment {
 
                 mTextView.setText("Total ml consumed: " + counter);
                 waterTracker.setProgress(counter);
-                log(v);
+                save(v);
 
             }
         });
@@ -115,9 +116,17 @@ public class HomeFragment extends Fragment {
 
                 mTextView.setText("Total ml consumed: " + counter);
                 waterTracker.setProgress(counter);
+                save(v);
+
+
+            }
+        });
+
+        logButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 log(v);
-
-
+                reset();
             }
         });
 
@@ -181,17 +190,10 @@ public class HomeFragment extends Fragment {
     }
 
     public void load(View v) {
-        Calendar calendar = Calendar.getInstance();
-
-        int day_of_week = calendar.get(Calendar.DAY_OF_WEEK)-1;
-        int week_of_year = calendar.get(Calendar.WEEK_OF_YEAR);
-
-        String FILE_NAME_DAY = "day" + day_of_week + "-" + week_of_year + ".txt";
-
         FileInputStream fis = null;
 
         try {
-            fis = getActivity().openFileInput(FILE_NAME_DAY);
+            fis = getActivity().openFileInput(FILE_NAME);
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader br = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();

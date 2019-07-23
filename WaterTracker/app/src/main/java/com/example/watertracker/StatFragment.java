@@ -36,7 +36,7 @@ public class StatFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable
             ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_stat, container, false);
-//        save(v);
+        save(v);
         weeklyView(v);
         //
         return v;
