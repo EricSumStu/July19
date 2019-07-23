@@ -26,7 +26,7 @@
         android:id="@+id/bottlebtn"
         android:layout_width="86dp"
         android:layout_height="159dp"
-        android:layout_marginStart="92dp"
+        android:layout_marginStart="80dp"
         android:layout_marginBottom="24dp"
         android:background="@null"
         android:scaleType="fitCenter"
@@ -76,14 +76,6 @@
         app:layout_constraintEnd_toEndOf="@+id/bottlebtn"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/bottlebtn" />
-
-    <TextView
-        android:id="@+id/textView8"
-        android:layout_width="98dp"
-        android:layout_height="26dp"
-        android:layout_marginBottom="180dp"
-        android:gravity="center"
-        android:textColor="#010203" />
 
     <TextView
         android:id="@+id/textView11"

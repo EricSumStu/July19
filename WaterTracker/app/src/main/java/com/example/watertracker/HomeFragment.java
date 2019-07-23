@@ -74,8 +74,8 @@ public class HomeFragment extends Fragment {
         waterTracker.setMax(progressMax);
         waterTracker.setProgress(counter);
         mTextView.setText("Total ml consumed: " + counter);
-        GoalTextView = (TextView) v.findViewById(R.id.textView8);
-        GoalTextView.setText("My Goal : "+progressMax+"ml");
+//        GoalTextView = (TextView) v.findViewById(R.id.textView8);
+//        GoalTextView.setText("My Goal : "+progressMax+"ml");
         resetImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
