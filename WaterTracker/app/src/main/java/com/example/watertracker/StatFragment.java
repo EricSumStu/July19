@@ -61,7 +61,7 @@ public class StatFragment extends Fragment {
         int i = 0;
         while (i < 4) {
 
-            String text = Integer.toString(getRandomNumberInRange(1000,2000));
+            String text = Integer.toString(getRandomNumberInRange(2000,4000));
 
             try {
                 fos = getActivity().openFileOutput("day" + i+"-"+this_weeknumber + ".txt", MODE_PRIVATE);
