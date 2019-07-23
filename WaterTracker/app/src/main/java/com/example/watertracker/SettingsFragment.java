@@ -9,8 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +32,11 @@ import static android.content.Context.MODE_PRIVATE;
 public class SettingsFragment extends Fragment {
     EditText goalValue;
     int max;
+    Spinner sp ;
+    String names[] = {"2 Litres","2.5 Litres","3 Litres","3.5 Litres","4 Litres"};
+    ArrayAdapter<String> adapter;
+    String record;
+    double value;
     private static final String FILE_NAMEPROGRESS="ProgressMaxValue.txt";
     @Nullable
     @Override
@@ -36,45 +45,82 @@ public class SettingsFragment extends Fragment {
         final View v = inflater.inflate(R.layout.fragment_settings, container, false);
 
         Button setGoal = (Button) v.findViewById(R.id.SetBtn);
-        goalValue = (EditText) v.findViewById(R.id.goalText);
+
+        //Spinner bits
+
+        sp = (Spinner) v.findViewById(R.id.spinner);
+        adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_list_item_1,names);
+        sp.setAdapter(adapter);
+        sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+                                         @Override
+
+                                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                                             //use postion value
+
+                                             switch (position) {
+
+                                                 case 0:
+
+                                                     record = "2 Litres";
+                                                     value = Double.parseDouble("2");
+
+                                                     break;
+
+                                                 case 1:
+
+                                                     record = "2.5 Litres";
+                                                     value = Double.parseDouble("2.5");
+
+                                                     break;
+
+                                                 case 2:
+
+                                                     record = "3";
+                                                     value = Double.parseDouble("3");
+
+                                                     break;
+                                                 case 3:
+
+                                                     record = "3.5";
+                                                     value = Double.parseDouble("3.5");
+
+                                                     break;
+                                                 case 4:
+
+                                                     record = "4";
+                                                     value = Double.parseDouble("4");
+
+                                                     break;
+                                             }
+
+                                         }
+
+                                         @Override
+
+                                         public void onNothingSelected(AdapterView<?> parent) {
+
+                                         }
+                                     });
+
+//        goalValue = (EditText) v.findViewById(R.id.goalText);
 
 
 
 
        setGoal.setOnClickListener(new View.OnClickListener(){
          @Override
-           public void onClick(View view){
-             Editable newProgress = goalValue.getEditableText();
+           public void onClick(View view) {
+             max = (int) (value * 1000);
+             saveProgress(v);
+             Toast.makeText(getActivity(), "Goal has been changed", Toast.LENGTH_LONG).show();
 
-             try {
-                 max = (int) Integer.parseInt(String.valueOf(newProgress));
-                 saveProgress(v);
-                 Toast.makeText(getActivity(), "Goal has been changed", Toast.LENGTH_LONG).show();
-             } catch (NumberFormatException ex) {
-                 ex.printStackTrace();
-                 // Alert
-                 AlertDialog alertDialog= new AlertDialog.Builder(getActivity()).create();
-                 alertDialog.setTitle("Enter a a valid number");
-                 alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Thanks",
-                         new DialogInterface.OnClickListener() {
-                             public void onClick(DialogInterface dialog, int which) {
-                                 dialog.dismiss();
-                             }
-                         });
-                 alertDialog.show();
-             } finally {
-                 try {
-                     InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                     imm.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(), 0);
-                 } catch (Exception e) {
-                     // TODO: handle exception
-                 }
-             }
+             Intent backHome = new Intent(getActivity(),MainActivity.class);
 
+             startActivity(backHome);
 
          }
-
-
         });
 
 
@@ -103,3 +149,4 @@ public class SettingsFragment extends Fragment {
         }
     }
 }
+
