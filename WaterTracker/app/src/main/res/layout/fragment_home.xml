@@ -2,39 +2,37 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FBFCFD">
 
     <ImageButton
         android:id="@+id/bottlebtn"
-        android:layout_width="155dp"
-        android:layout_height="298dp"
-        android:layout_marginStart="48dp"
+        android:layout_width="128dp"
+        android:layout_height="260dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="44dp"
         android:background="#FBFCFD"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="@+id/glassbtn"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/bottle1" />
+        app:layout_constraintTop_toBottomOf="@+id/countertext"
+        app:srcCompat="@drawable/waterbottle" />
 
     <ImageButton
         android:id="@+id/glassbtn"
-        android:layout_width="110dp"
-        android:layout_height="161dp"
+        android:layout_width="86dp"
+        android:layout_height="158dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="148dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:background="#FBFCFD"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.431"
+        app:layout_constraintHorizontal_bias="0.624"
         app:layout_constraintStart_toEndOf="@+id/bottlebtn"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.66"
-        app:srcCompat="@drawable/glass1" />
+        app:layout_constraintTop_toBottomOf="@+id/countertext"
+        app:srcCompat="@drawable/waterglass" />
 
     <ProgressBar
         android:id="@+id/waterCounter"
@@ -42,14 +40,13 @@
         android:layout_width="382dp"
         android:layout_height="20dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="112dp"
         android:background="@null"
         android:progressBackgroundTint="#add8e6"
         android:progressTint="#0091ea"
-        app:layout_constraintBottom_toTopOf="@+id/bottlebtn"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.615"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -59,93 +56,79 @@
         android:layout_width="152dp"
         android:layout_height="46dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:fontFamily="monospace"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/bottlebtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/waterCounter"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="99dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="111dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="56dp"
         android:gravity="center"
         android:text="500 ml"
         android:textColor="#010203"
-        app:layout_constraintBottom_toBottomOf="@+id/bottlebtn"
-        app:layout_constraintEnd_toEndOf="@+id/bottlebtn"
-        app:layout_constraintStart_toStartOf="@+id/bottlebtn"
-        app:layout_constraintTop_toTopOf="@+id/bottlebtn"
-        app:layout_constraintVertical_bias="0.602" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottlebtn" />
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="109dp"
-        android:layout_height="33dp"
+        android:layout_width="94dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="52dp"
         android:gravity="center"
         android:text="200 ml"
         android:textColor="#010203"
-        app:layout_constraintBottom_toBottomOf="@+id/glassbtn"
-        app:layout_constraintEnd_toEndOf="@+id/glassbtn"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/glassbtn"
-        app:layout_constraintTop_toTopOf="@+id/glassbtn" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/glassbtn" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:text="My Goal: 3000ml"
-        app:layout_constraintBottom_toTopOf="@+id/bottlebtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/countertext"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/waterCounter" />
 
     <ImageButton
         android:id="@+id/resetbtn"
         android:layout_width="71dp"
         android:layout_height="67dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintHorizontal_bias="0.543"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.674"
+        app:layout_constraintTop_toBottomOf="@+id/countertext"
+        app:layout_constraintVertical_bias="0.904"
         app:srcCompat="@drawable/newreset" />
 
     <ImageButton
         android:id="@+id/logButton"
         android:layout_width="74dp"
         android:layout_height="69dp"
-        android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:background="@null"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.731"
-        app:layout_constraintStart_toEndOf="@+id/resetbtn"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.775"
         app:srcCompat="@drawable/log_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

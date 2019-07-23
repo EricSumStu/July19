@@ -10,7 +10,9 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.watertracker.AboutFragment;
+import com.example.watertracker.HomeFragment;
 import com.example.watertracker.R;
+import com.example.watertracker.SettingsFragment;
 import com.example.watertracker.StatFragment;
 import com.google.android.material.navigation.NavigationView;
 
