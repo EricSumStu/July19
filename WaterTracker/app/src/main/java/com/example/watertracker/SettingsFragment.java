@@ -53,74 +53,70 @@ public class SettingsFragment extends Fragment {
         sp.setAdapter(adapter);
         sp.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
-                                         @Override
+            @Override
 
-                                         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                                             //use postion value
+                //use postion value
 
-                                             switch (position) {
+                switch (position) {
 
-                                                 case 0:
+                    case 0:
 
-                                                     record = "2 Litres";
-                                                     value = Double.parseDouble("2");
+                        value = Double.parseDouble("2");
 
-                                                     break;
+                        break;
 
-                                                 case 1:
+                    case 1:
 
-                                                     record = "2.5 Litres";
-                                                     value = Double.parseDouble("2.5");
 
-                                                     break;
+                        value = Double.parseDouble("2.5");
 
-                                                 case 2:
+                        break;
 
-                                                     record = "3";
-                                                     value = Double.parseDouble("3");
+                    case 2:
 
-                                                     break;
-                                                 case 3:
+                        value = Double.parseDouble("3");
 
-                                                     record = "3.5";
-                                                     value = Double.parseDouble("3.5");
+                        break;
+                    case 3:
 
-                                                     break;
-                                                 case 4:
+                        value = Double.parseDouble("3.5");
 
-                                                     record = "4";
-                                                     value = Double.parseDouble("4");
+                        break;
+                    case 4:
 
-                                                     break;
-                                             }
+                        value = Double.parseDouble("4");
 
-                                         }
+                        break;
+                }
 
-                                         @Override
+            }
 
-                                         public void onNothingSelected(AdapterView<?> parent) {
+            @Override
 
-                                         }
-                                     });
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 //        goalValue = (EditText) v.findViewById(R.id.goalText);
 
 
 
 
-       setGoal.setOnClickListener(new View.OnClickListener(){
-         @Override
-           public void onClick(View view) {
-             max = (int) (value * 1000);
-             saveProgress(v);
-             Toast.makeText(getActivity(), "Goal has been changed", Toast.LENGTH_LONG).show();
+        setGoal.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                max = (int) (value * 1000);
+                saveProgress(v);
+                Toast.makeText(getActivity(), "Goal has been changed", Toast.LENGTH_LONG).show();
 
-             Intent backHome = new Intent(getActivity(),MainActivity.class);
+                Intent backHome = new Intent(getActivity(),MainActivity.class);
 
-             startActivity(backHome);
+                startActivity(backHome);
 
-         }
+            }
         });
 
 
