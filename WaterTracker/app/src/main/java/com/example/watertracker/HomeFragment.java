@@ -167,7 +167,7 @@ public class HomeFragment extends Fragment {
         counter = 0;
         mTextView.setText(counter+"ml");
         waterTracker.setProgress(counter);
-        save(v);
+        log(v);
         showCongrats = true;
 
     }
@@ -270,8 +270,6 @@ public class HomeFragment extends Fragment {
             try {
                 fos = getActivity().openFileOutput(FILE_NAME_DAY, MODE_PRIVATE);
                 fos.write(text.getBytes());
-                Toast.makeText(getActivity(), "Logged: " + FILE_NAME_DAY + " with: " + text,
-                        Toast.LENGTH_LONG).show();
             } catch (IOException e) {
                 e.printStackTrace();
 
