@@ -72,15 +72,18 @@ public class HomeFragment extends Fragment {
         loadProgress(v);
         waterTracker.setMax(progressMax);
         waterTracker.setProgress(counter);
-        mTextView.setText("Total ml consumed: " + counter);
+        mTextView.setText(counter+"ml");
         GoalTextView = (TextView) v.findViewById(R.id.textView8);
-        GoalTextView.setText("My Goal : "+progressMax+"ml");
+        GoalTextView.setText(progressMax+"ml");
         resetImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reset();
+                showResetWarning();
+
+
             }
         });
+
 
         bottleImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,7 +97,7 @@ public class HomeFragment extends Fragment {
                     showCongrats = false;
                 }
 
-                mTextView.setText("Total ml consumed: " + counter);
+                mTextView.setText(counter+"ml");
                 waterTracker.setProgress(counter);
                 log(v);
 
@@ -113,7 +116,7 @@ public class HomeFragment extends Fragment {
                     showCongrats = false;
                 }
 
-                mTextView.setText("Total ml consumed: " + counter);
+                mTextView.setText(counter+"ml");
                 waterTracker.setProgress(counter);
                 log(v);
 
@@ -125,9 +128,44 @@ public class HomeFragment extends Fragment {
         return v;
     }
 
+    public void showResetWarning() {
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+        alertDialog.setTitle("Are you sure you want to reset?");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        reset();
+                    }
+                });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+//        alertDialog.setButton("Confirm",
+//                new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                    }
+//                });
+//        alertDialog.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//            }
+//        });
+
+
+        alertDialog.show();
+       // AlertDialog.Builder builder = new AlertDialog.Builder( );
+
+
+    }
+
     public void reset(){
         counter = 0;
-        mTextView.setText("Total ml consumed: " + counter);
+        mTextView.setText(counter+"ml");
         waterTracker.setProgress(counter);
         save(v);
         showCongrats = true;

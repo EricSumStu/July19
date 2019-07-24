@@ -9,10 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".creditsPage"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name=".creditsPage"/>
         <activity android:name=".waterFacts"
-            android:parentActivityName=".MainActivity"/>
+            />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
