@@ -61,7 +61,7 @@ public class SettingsFragment extends Fragment {
                 switch (position) {
 
                     case 0:
-                        
+
                         value = Double.parseDouble("2");
 
                         break;
