@@ -78,9 +78,12 @@ public class HomeFragment extends Fragment {
         resetImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                reset();
+                showResetWarning();
+
+
             }
         });
+
 
         bottleImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +126,41 @@ public class HomeFragment extends Fragment {
 
 
         return v;
+    }
+
+    public void showResetWarning() {
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+        alertDialog.setTitle("Are you sure you want to reset?");
+        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        reset();
+                    }
+                });
+        alertDialog.setButton(AlertDialog.BUTTON_NEGATIVE, "Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+//        alertDialog.setButton("Confirm",
+//                new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                    }
+//                });
+//        alertDialog.setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//            }
+//        });
+
+
+        alertDialog.show();
+       // AlertDialog.Builder builder = new AlertDialog.Builder( );
+
+
     }
 
     public void reset(){
