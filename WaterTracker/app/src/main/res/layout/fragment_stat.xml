@@ -10,11 +10,11 @@ android:layout_height="match_parent">
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/barchart"
-        android:layout_width="398dp"
-        android:layout_height="722dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="5dp"
-        tools:ignore="MissingConstraints" />
+        android:layout_width="406dp"
+        android:layout_height="662dp"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="2dp"
+        tools:layout_editor_absoluteY="34dp" />
             android:id="@+id/barchart"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
