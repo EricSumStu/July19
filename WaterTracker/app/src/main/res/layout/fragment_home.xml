@@ -9,19 +9,22 @@
 
     <ImageButton
         android:id="@+id/bottlebtn"
-        android:layout_width="155dp"
-        android:layout_height="298dp"
-        android:layout_marginStart="56dp"
+        android:layout_width="128dp"
+        android:layout_height="182dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="8dp"
         android:background="#FBFCFD"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="@+id/glassbtn"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/bottle1" />
 
     <ImageButton
         android:id="@+id/glassbtn"
-        android:layout_width="110dp"
-        android:layout_height="161dp"
+        android:layout_width="70dp"
+        android:layout_height="127dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
@@ -30,17 +33,16 @@
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.54"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/bottlebtn"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.698"
         app:srcCompat="@drawable/glass1" />
 
     <ProgressBar
         android:id="@+id/waterCounter"
         style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="426dp"
-        android:layout_height="586dp"
+        android:layout_width="386dp"
+        android:layout_height="439dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="8dp"
@@ -52,10 +54,10 @@
         android:progressTint="#0091ea"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.444"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.291" />
 
 
     <TextView
@@ -63,7 +65,7 @@
         android:layout_width="82dp"
         android:layout_height="36dp"
         android:layout_marginEnd="60dp"
-        android:layout_marginBottom="492dp"
+        android:layout_marginBottom="484dp"
         android:fontFamily="monospace"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -71,38 +73,38 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="99dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="89dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="8dp"
         android:gravity="center"
         android:text="500 ml"
         android:textColor="#010203"
-        app:layout_constraintBottom_toBottomOf="@+id/bottlebtn"
-        app:layout_constraintEnd_toEndOf="@+id/bottlebtn"
-        app:layout_constraintStart_toStartOf="@+id/bottlebtn"
-        app:layout_constraintTop_toTopOf="@+id/bottlebtn"
-        app:layout_constraintVertical_bias="0.602" />
+        app:layout_constraintEnd_toStartOf="@+id/textView11"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/glassbtn" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="109dp"
         android:layout_height="33dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="84dp"
         android:gravity="center"
         android:text="200 ml"
         android:textColor="#010203"
-        app:layout_constraintBottom_toBottomOf="@+id/glassbtn"
-        app:layout_constraintEnd_toEndOf="@+id/glassbtn"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/glassbtn"
-        app:layout_constraintTop_toTopOf="@+id/glassbtn" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/glassbtn" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="79dp"
-        android:layout_height="31dp"
+        android:layout_height="24dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="472dp"
+        android:layout_marginBottom="484dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/countertext"
         app:layout_constraintHorizontal_bias="0.373"
@@ -113,15 +115,15 @@
         android:layout_width="71dp"
         android:layout_height="67dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         android:scaleType="fitCenter"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11"
-        app:layout_constraintVertical_bias="0.603"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.92"
         app:srcCompat="@drawable/newreset" />
 
     <TextView
@@ -135,7 +137,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView15"
@@ -148,7 +150,7 @@
         android:text="Consumed"
         app:layout_constraintBottom_toTopOf="@+id/countertext"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.626"
+        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toEndOf="@+id/textView14"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
