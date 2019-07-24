@@ -106,7 +106,7 @@ public class HomeFragment extends Fragment {
             public void onClick(View view) {
                 glassImageButton.startAnimation(glassAnimation);
 
-                counter = counter + 500;
+                counter = counter + 200;
                 random();
                 if(showCongrats && counter >= progressMax){
                     showMaxWarning();
