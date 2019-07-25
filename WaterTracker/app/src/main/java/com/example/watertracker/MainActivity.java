@@ -1,21 +1,30 @@
 package com.example.watertracker;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
-
-import com.example.watertracker.AboutFragment;
-import com.example.watertracker.R;
-import com.example.watertracker.StatFragment;
 import com.google.android.material.navigation.NavigationView;
+
+import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
+    private static final String ABOUT_TITLE = "About";
+    private static final String STATS_TITLE = "Stats";
+    private static final String HOME_TITLE = "Water Tracker";
+    private static final String SETTINGS_TITLE = "Settings";
+    private Fragment aboutFragment = new AboutFragment();
+    private Fragment settingsFragment = new SettingsFragment();
+    private Fragment homeFragment = new HomeFragment();
+    private Fragment statFragment = new StatFragment();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,24 +46,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.nav_home);
     }
 
+    private void updateMenu(final String title, final Fragment fragment){
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                fragment).commit();
+    }
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch(menuItem.getItemId()) {
             case R.id.nav_about:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new AboutFragment()).commit();
+                updateMenu(ABOUT_TITLE, aboutFragment);
                 break;
             case R.id.nav_stat:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new StatFragment()).commit();
+                updateMenu(STATS_TITLE, statFragment);
                 break;
             case R.id.nav_home:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HomeFragment()).commit();
+                updateMenu(HOME_TITLE, homeFragment);
                 break;
             case R.id.nav_settings:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SettingsFragment()).commit();
+                updateMenu(SETTINGS_TITLE, settingsFragment);
                 break;
         }
         drawer.closeDrawer(GravityCompat.START);
@@ -69,4 +80,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
     }
 }
+
+
 
