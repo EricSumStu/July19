@@ -10,16 +10,17 @@
     tools:context=".MainActivity" >
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="951dp"
-        android:layout_height="1098dp"
-        android:layout_marginTop="56dp"
-        android:scaleType="centerCrop"
+        android:id="@+id/imageView5"
+        android:layout_width="1200dp"
+        android:layout_height="1193dp"
+        app:srcCompat="@drawable/newbd"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="-139dp"
+        android:scaleType="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/bd" />
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/textView16"
