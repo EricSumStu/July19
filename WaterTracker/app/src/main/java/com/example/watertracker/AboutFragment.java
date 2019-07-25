@@ -45,7 +45,6 @@ public class AboutFragment extends Fragment {
                     public void run() {
                         Intent mainIntent = new Intent(getActivity(), waterFacts.class);
                         getActivity().startActivity(mainIntent);
-                        getActivity().finish();
 
                     }
                 }, SPLASH_DISPLAY_LENGTH);
@@ -63,7 +62,6 @@ public class AboutFragment extends Fragment {
                     public void run() {
                         Intent mainIntent = new Intent(getActivity(), creditsPage.class);
                         getActivity().startActivity(mainIntent);
-                        getActivity().finish();
 
                     }
                 }, SPLASH_DISPLAY_LENGTH);
@@ -74,3 +72,4 @@ public class AboutFragment extends Fragment {
 
     }
 }
+
