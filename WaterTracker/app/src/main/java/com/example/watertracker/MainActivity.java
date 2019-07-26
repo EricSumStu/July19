@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setCheckedItem(R.id.nav_home);
     }
 
-    private void updateMenu(final String title, final Fragment fragment){
+    private void updateMenu(final String title, final Fragment fragment) {
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 fragment).commit();
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-        switch(menuItem.getItemId()) {
+        switch (menuItem.getItemId()) {
             case R.id.nav_about:
                 updateMenu(ABOUT_TITLE, aboutFragment);
                 break;
@@ -73,11 +73,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
     @Override
     public void onBackPressed() {
-        if(drawer.isDrawerOpen(GravityCompat.START)){
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new HomeFragment()).commit();
         }
+
     }
 }
 
